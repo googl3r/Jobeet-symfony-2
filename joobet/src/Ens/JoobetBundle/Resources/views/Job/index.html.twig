@@ -1,0 +1,30 @@
+
+{% extends 'EnsJoobetBundle::layout.html.twig' %}
+    {% block stylesheets %}
+        {{ parent() }}
+        <link rel="stylesheet" href="{{ asset('bundles/ensjoobet/css/jobs.css') }}" type="text/css" media="all" />
+    {% endblock %}
+    {% block content %}
+        <div id="jobs">
+            {% for category in categories %}
+                <div>
+                    <div class="category">
+                        <div class="feed">
+                            <a href="">Feed</a>
+                        </div>
+                        <h1><a href="{{ path('EnsJoobetBundle_category', { 'slug': category.slug }) }}">{{ category.name }}
+                        </a></h1>
+                    </div>
+                    {% include 'EnsJoobetBundle:Job:list.html.twig' with {'jobs': category.activejobs} %}
+                    {% if category.morejobs %}
+                        <div class="more_jobs">
+                            and <a href="{{ path('EnsJoobetBundle_category', { 'slug': category.slug }) }}">{{ category.morejobs }}</a>
+                            more...
+                        </div>
+                    {% endif %}
+                </div>
+
+                </div>
+            {% endfor %}
+        </div>
+    {% endblock %}

@@ -1,0 +1,16 @@
+parameters:
+#    ens_joobet.example.class: Ens\JoobetBundle\Example
+
+services:
+    ens.joobet.admin.category:
+        class: Ens\JoobetBundle\admin\CategoryAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: joobet, label: Categories}
+        arguments: [null, Ens\JoobetBundle\Entity\Category,EnsJoobetBundle:CategoryAdmin]
+
+    ens.joobet.admin.job:
+        class: Ens\JoobetBundle\admin\JobAdmin
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: joobet, label: Jobs}
+        arguments: [null,Ens\JoobetBundle\Entity\Job, EnsJoobetBundle:JobAdmin]
+

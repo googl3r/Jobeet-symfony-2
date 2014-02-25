@@ -1,0 +1,9 @@
+ens_joobet_homepage:
+    pattern:  /
+    defaults: { _controller: EnsJoobetBundle:Job:index }
+EnsJoobetBundle_job:
+    resource: "@EnsJoobetBundle/Resources/config/routing/job.yml"
+    prefix: /job
+EnsJoobetBundle_category:
+    pattern: /category/{slug}/{page}
+    defaults: {_controller:EnsJoobetBundle:Category:show, page:1}
